@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>c97f3afa-b392-4ee7-9121-b860e76020e3</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkIdentifier>Deployment</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>1.0</TargetFrameworkVersion>
+    <PrepareForBuildDependsOn>
+    </PrepareForBuildDependsOn>
+  </PropertyGroup>
+  <Import Condition=" Exists('Deployment.targets') " Project="Deployment.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <!-- vertag<:>start tokens<:>maj.min -->
+  <Import Condition=" Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets') " Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets" />
+  <!-- vertag<:>end -->
+  <ItemGroup>
+    <Content Include="azuredeploy.json" />
+    <Content Include="azuredeploy.parameters.json" />
+    <None Include="Deployment.targets">
+      <Visible>False</Visible>
+    </None>
+    <Content Include="Deploy-AzureResourceGroup.ps1" />
+    <Content Include="nestedtemplates\msNetwork-vNet.json" />
+    <Content Include="nestedtemplates\msNetwork-vNet.parameters.json" />
+    <Content Include="nestedtemplates\msCompute-VM.json" />
+    <Content Include="nestedtemplates\msCompute-VM.parameters.json" />
+    <Content Include="nestedtemplates\msNetwork-NIC.json" />
+    <Content Include="nestedtemplates\msNetwork-NIC.parameters.json" />
+    <Content Include="nestedtemplates\msCompute-AS.json" />
+    <Content Include="nestedtemplates\msCompute-AS.parameters.json" />
+    <Content Include="nestedtemplates\msCompute-Disk.json" />
+    <Content Include="nestedtemplates\msCompute-Disk.parameters.json" />
+    <Content Include="nestedtemplates\msNetwork-PIP.json" />
+    <Content Include="nestedtemplates\msNetwork-PIP.parameters.json" />
+    <Content Include="nestedtemplates\msNetwork-ILB.json" />
+    <Content Include="nestedtemplates\msNetwork-ILB.parameters.json" />
+    <Content Include="nestedtemplates\msNetwork-PLB.json" />
+    <Content Include="nestedtemplates\msNetwork-PLB.parameters.json" />
+    <Content Include="nestedtemplates\msNetwork-NSG.json" />
+    <Content Include="nestedtemplates\msNetwork-NSG.parameters.json" />
+    <Content Include="nestedtemplates\msNetwork-RT.json" />
+    <Content Include="nestedtemplates\msNetwork-RT.parameters.json" />
+    <Content Include="nestedtemplates\msInsights-AR.json" />
+    <Content Include="nestedtemplates\msInsights-AR.parameters.json" />
+  </ItemGroup>
+  <Target Name="GetReferenceAssemblyPaths" />
+</Project>
