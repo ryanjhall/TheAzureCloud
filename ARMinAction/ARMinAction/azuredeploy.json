@@ -7,7 +7,12 @@
     },
     "_artifactsLocationSasToken": {
       "type": "securestring"
-    }},
+    }
+  },
+  "msCompute-ASName": {
+    "type": "string",
+    "minLength": 1
+  },
   "variables": {
     "msNetwork-vNetTemplateFolder": "nestedtemplates",
     "msNetwork-vNetTemplateFileName": "msNetwork-vNet.json",
@@ -41,13 +46,19 @@
     "msNetwork-RTTemplateParametersFileName": "msNetwork-RT.parameters.json",
     "msInsights-ARTemplateFolder": "nestedtemplates",
     "msInsights-ARTemplateFileName": "msInsights-AR.json",
-    "msInsights-ARTemplateParametersFileName": "msInsights-AR.parameters.json"},
+    "msInsights-ARTemplateParametersFileName": "msInsights-AR.parameters.json",
+    "msStorage-SATemplateFolder": "nestedtemplates",
+    "msStorage-SATemplateFileName": "msStorage-SA.json",
+    "msStorage-SATemplateParametersFileName": "msStorage-SA.parameters.json"
+  },
   "resources": [
     {
+      "comments": "",
+      "condition": "[equals(parameters(''), <Value>)]",
       "name": "msNetwork-vNet",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
-      "dependsOn": [ ],
+      "dependsOn": [],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -61,10 +72,12 @@
       }
     },
     {
+      "comments": "",
+      "condition": "[equals(parameters(''), <Value>)]",
       "name": "msCompute-VM",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
-      "dependsOn": [ ],
+      "dependsOn": [],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -78,10 +91,12 @@
       }
     },
     {
+      "comments": "",
+      "condition": "[equals(parameters(''), <Value>)]",
       "name": "msNetwork-NIC",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
-      "dependsOn": [ ],
+      "dependsOn": [],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -95,10 +110,12 @@
       }
     },
     {
+      "comments": "",
+      "condition": "[equals(parameters(''), <Value>)]",
       "name": "msCompute-AS",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
-      "dependsOn": [ ],
+      "dependsOn": [],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -112,10 +129,12 @@
       }
     },
     {
+      "comments": "",
+      "condition": "[equals(parameters(''), <Value>)]",
       "name": "msCompute-Disk",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
-      "dependsOn": [ ],
+      "dependsOn": [],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -129,10 +148,12 @@
       }
     },
     {
+      "comments": "",
+      "condition": "[equals(parameters(''), <Value>)]",
       "name": "msNetwork-PIP",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
-      "dependsOn": [ ],
+      "dependsOn": [],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -146,10 +167,12 @@
       }
     },
     {
+      "comments": "",
+      "condition": "[equals(parameters(''), <Value>)]",
       "name": "msNetwork-ILB",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
-      "dependsOn": [ ],
+      "dependsOn": [],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -163,10 +186,12 @@
       }
     },
     {
+      "comments": "",
+      "condition": "[equals(parameters(''), <Value>)]",
       "name": "msNetwork-PLB",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
-      "dependsOn": [ ],
+      "dependsOn": [],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -180,10 +205,12 @@
       }
     },
     {
+      "comments": "",
+      "condition": "[equals(parameters(''), <Value>)]",
       "name": "msNetwork-NSG",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
-      "dependsOn": [ ],
+      "dependsOn": [],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -197,10 +224,12 @@
       }
     },
     {
+      "comments": "",
+      "condition": "[equals(parameters(''), <Value>)]",
       "name": "msNetwork-RT",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
-      "dependsOn": [ ],
+      "dependsOn": [],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -214,10 +243,12 @@
       }
     },
     {
+      "comments": "",
+      "condition": "[equals(parameters(''), <Value>)]",
       "name": "msInsights-AR",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2016-09-01",
-      "dependsOn": [ ],
+      "dependsOn": [],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -229,6 +260,26 @@
           "contentVersion": "1.0.0.0"
         }
       }
-    }],
+    },
+    {
+      "comments": "",
+      "condition": "[equals(parameters(''), <Value>)]",
+      "name": "msStorage-SA",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2016-09-01",
+      "dependsOn": [],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msStorage-SATemplateFolder'), '/', variables('msStorage-SATemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parametersLink": {
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msStorage-SATemplateFolder'), '/', variables('msStorage-SATemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    }
+  ],
   "outputs": {}
 }

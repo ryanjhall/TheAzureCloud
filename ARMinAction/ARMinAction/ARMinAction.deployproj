@@ -53,6 +53,8 @@
     <Content Include="nestedtemplates\msNetwork-RT.parameters.json" />
     <Content Include="nestedtemplates\msInsights-AR.json" />
     <Content Include="nestedtemplates\msInsights-AR.parameters.json" />
+    <Content Include="nestedtemplates\msStorage-SA.json" />
+    <Content Include="nestedtemplates\msStorage-SA.parameters.json" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>
