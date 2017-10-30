@@ -9,47 +9,58 @@
       "type": "securestring"
     }
   },
-  "msCompute-ASName": {
-    "type": "string",
-    "minLength": 1
-  },
   "variables": {
-    "msNetwork-vNetTemplateFolder": "nestedtemplates",
-    "msNetwork-vNetTemplateFileName": "msNetwork-vNet.json",
-    "msNetwork-vNetTemplateParametersFileName": "msNetwork-vNet.parameters.json",
-    "msCompute-VMTemplateFolder": "nestedtemplates",
-    "msCompute-VMTemplateFileName": "msCompute-VM.json",
-    "msCompute-VMTemplateParametersFileName": "msCompute-VM.parameters.json",
-    "msNetwork-NICTemplateFolder": "nestedtemplates",
-    "msNetwork-NICTemplateFileName": "msNetwork-NIC.json",
-    "msNetwork-NICTemplateParametersFileName": "msNetwork-NIC.parameters.json",
-    "msCompute-ASTemplateFolder": "nestedtemplates",
-    "msCompute-ASTemplateFileName": "msCompute-AS.json",
-    "msCompute-ASTemplateParametersFileName": "msCompute-AS.parameters.json",
-    "msCompute-DiskTemplateFolder": "nestedtemplates",
-    "msCompute-DiskTemplateFileName": "msCompute-Disk.json",
-    "msCompute-DiskTemplateParametersFileName": "msCompute-Disk.parameters.json",
-    "msNetwork-PIPTemplateFolder": "nestedtemplates",
-    "msNetwork-PIPTemplateFileName": "msNetwork-PIP.json",
-    "msNetwork-PIPTemplateParametersFileName": "msNetwork-PIP.parameters.json",
-    "msNetwork-ILBTemplateFolder": "nestedtemplates",
-    "msNetwork-ILBTemplateFileName": "msNetwork-ILB.json",
-    "msNetwork-ILBTemplateParametersFileName": "msNetwork-ILB.parameters.json",
-    "msNetwork-PLBTemplateFolder": "nestedtemplates",
-    "msNetwork-PLBTemplateFileName": "msNetwork-PLB.json",
-    "msNetwork-PLBTemplateParametersFileName": "msNetwork-PLB.parameters.json",
-    "msNetwork-NSGTemplateFolder": "nestedtemplates",
-    "msNetwork-NSGTemplateFileName": "msNetwork-NSG.json",
-    "msNetwork-NSGTemplateParametersFileName": "msNetwork-NSG.parameters.json",
-    "msNetwork-RTTemplateFolder": "nestedtemplates",
-    "msNetwork-RTTemplateFileName": "msNetwork-RT.json",
-    "msNetwork-RTTemplateParametersFileName": "msNetwork-RT.parameters.json",
-    "msInsights-ARTemplateFolder": "nestedtemplates",
-    "msInsights-ARTemplateFileName": "msInsights-AR.json",
-    "msInsights-ARTemplateParametersFileName": "msInsights-AR.parameters.json",
-    "msStorage-SATemplateFolder": "nestedtemplates",
-    "msStorage-SATemplateFileName": "msStorage-SA.json",
-    "msStorage-SATemplateParametersFileName": "msStorage-SA.parameters.json"
+    "deploySettings": {
+      "TemplateFolder": "nestedtemplates"
+    },
+    "vNetSettings": {
+      "TemplateFileName": "msNetwork-vNet.json"
+    },
+
+    "vmSettings": {
+      "TemplateFileName": "msCompute-VM.json"
+    },
+
+    "nicSettings": {
+      "msNetwork-NICTemplateFileName": "msNetwork-NIC.json"
+    },
+
+    "asSettings": {
+      "msCompute-ASName": null,
+      "TemplateFileName": "msCompute-AS.json"
+    },
+
+    "diskSettings": {
+      "TemplateFileName": "msCompute-Disk.json"
+    },
+
+    "pipSettings": {
+      "TemplateFileName": "msNetwork-PIP.json"
+    },
+
+    "ilbSettings": {
+      "TemplateFileName": "msNetwork-ILB.json"
+    },
+
+    "plbSettings": {
+      "TemplateFileName": "msNetwork-PLB.json"
+    },
+
+    "nsgSettings": {
+      "msNetwork-NSGTemplateFileName": "msNetwork-NSG.json"
+    },
+
+    "rtSettings": {
+      "msNetwork-RTTemplateFileName": "msNetwork-RT.json"
+    },
+
+    "arSettings": {
+      "TemplateFileName": "msInsights-AR.json"
+    },
+
+    "saSettings": {
+      "TemplateFileName": "msStorage-SA.json"
+    }
   },
   "resources": [
     {
@@ -62,11 +73,11 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msNetwork-vNetTemplateFolder'), '/', variables('msNetwork-vNetTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('vNetSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msNetwork-vNetTemplateFolder'), '/', variables('msNetwork-vNetTemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('vNetSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -81,11 +92,11 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msCompute-VMTemplateFolder'), '/', variables('msCompute-VMTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('vmSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msCompute-VMTemplateFolder'), '/', variables('msCompute-VMTemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('vmSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -100,11 +111,11 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msNetwork-NICTemplateFolder'), '/', variables('msNetwork-NICTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('nicSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msNetwork-NICTemplateFolder'), '/', variables('msNetwork-NICTemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('nicSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -119,11 +130,11 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msCompute-ASTemplateFolder'), '/', variables('msCompute-ASTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('asSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msCompute-ASTemplateFolder'), '/', variables('msCompute-ASTemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('asSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -138,11 +149,11 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msCompute-DiskTemplateFolder'), '/', variables('msCompute-DiskTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('diskSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msCompute-DiskTemplateFolder'), '/', variables('msCompute-DiskTemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('diskSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -157,11 +168,11 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msNetwork-PIPTemplateFolder'), '/', variables('msNetwork-PIPTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('pipSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msNetwork-PIPTemplateFolder'), '/', variables('msNetwork-PIPTemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('pipSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -176,11 +187,11 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msNetwork-ILBTemplateFolder'), '/', variables('msNetwork-ILBTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('ilbSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msNetwork-ILBTemplateFolder'), '/', variables('msNetwork-ILBTemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('ilbSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -195,11 +206,11 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msNetwork-PLBTemplateFolder'), '/', variables('msNetwork-PLBTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('plbSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msNetwork-PLBTemplateFolder'), '/', variables('msNetwork-PLBTemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('plbSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -214,11 +225,11 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msNetwork-NSGTemplateFolder'), '/', variables('msNetwork-NSGTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('nsgSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msNetwork-NSGTemplateFolder'), '/', variables('msNetwork-NSGTemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('nsgSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -233,11 +244,11 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msNetwork-RTTemplateFolder'), '/', variables('msNetwork-RTTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('rtSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msNetwork-RTTemplateFolder'), '/', variables('msNetwork-RTTemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('rtSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -252,11 +263,11 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msInsights-ARTemplateFolder'), '/', variables('msInsights-ARTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('arSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msInsights-ARTemplateFolder'), '/', variables('msInsights-ARTemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('arSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -271,11 +282,11 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msStorage-SATemplateFolder'), '/', variables('msStorage-SATemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('saSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msStorage-SATemplateFolder'), '/', variables('msStorage-SATemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('saSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         }
       }
