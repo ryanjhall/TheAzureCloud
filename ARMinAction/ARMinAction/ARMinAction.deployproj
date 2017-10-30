@@ -32,29 +32,17 @@
     </None>
     <Content Include="Deploy-AzureResourceGroup.ps1" />
     <Content Include="nestedtemplates\msNetwork-vNet.json" />
-    <Content Include="nestedtemplates\msNetwork-vNet.parameters.json" />
     <Content Include="nestedtemplates\msCompute-VM.json" />
-    <Content Include="nestedtemplates\msCompute-VM.parameters.json" />
     <Content Include="nestedtemplates\msNetwork-NIC.json" />
-    <Content Include="nestedtemplates\msNetwork-NIC.parameters.json" />
     <Content Include="nestedtemplates\msCompute-AS.json" />
-    <Content Include="nestedtemplates\msCompute-AS.parameters.json" />
     <Content Include="nestedtemplates\msCompute-Disk.json" />
-    <Content Include="nestedtemplates\msCompute-Disk.parameters.json" />
     <Content Include="nestedtemplates\msNetwork-PIP.json" />
-    <Content Include="nestedtemplates\msNetwork-PIP.parameters.json" />
     <Content Include="nestedtemplates\msNetwork-ILB.json" />
-    <Content Include="nestedtemplates\msNetwork-ILB.parameters.json" />
     <Content Include="nestedtemplates\msNetwork-PLB.json" />
-    <Content Include="nestedtemplates\msNetwork-PLB.parameters.json" />
     <Content Include="nestedtemplates\msNetwork-NSG.json" />
-    <Content Include="nestedtemplates\msNetwork-NSG.parameters.json" />
     <Content Include="nestedtemplates\msNetwork-RT.json" />
-    <Content Include="nestedtemplates\msNetwork-RT.parameters.json" />
     <Content Include="nestedtemplates\msInsights-AR.json" />
-    <Content Include="nestedtemplates\msInsights-AR.parameters.json" />
     <Content Include="nestedtemplates\msStorage-SA.json" />
-    <Content Include="nestedtemplates\msStorage-SA.parameters.json" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>
