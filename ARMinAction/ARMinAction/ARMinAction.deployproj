@@ -43,6 +43,8 @@
     <Content Include="nestedtemplates\msNetwork-RT.json" />
     <Content Include="nestedtemplates\msInsights-AR.json" />
     <Content Include="nestedtemplates\msStorage-SA.json" />
+    <Content Include="nestedtemplates\msCompute-Diag.json" />
+    <Content Include="nestedtemplates\msCompute-Diag.parameters.json" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>
