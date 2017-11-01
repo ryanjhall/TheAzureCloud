@@ -2,27 +2,29 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-
+    "Settings": {
+      "type": "object"
+    }
   },
   "variables": {},
   "resources": [
     {
-      "name": "[parameters('msCompute-ASName')]",
+      "name": "[parameters('Settings').Name]",
       "type": "Microsoft.Compute/availabilitySets",
-      "location": "[resourceGroup().location]",
-      "apiVersion": "2015-06-15",
+      "location": "[parameters('Settings').Location]",
+      "apiVersion": "[parameters('Settings').apiVersion]",
       "dependsOn": [],
       "tags": {
-        "displayName": "msCompute-AS"
+        "displayName": "Availability Set"
       },
       "properties": {
-        "platformUpdateDomainCount": 1,
-        "platformFaultDomainCount": 1
+        "platformUpdateDomainCount": "[parameters('Settings').UpdateDomainCount]",
+        "platformFaultDomainCount": "[parameters('Settings').FaultDomainCount]"
       }
     }
   ],
   "outputs": {
-    "masterip": {
+    "outValue": {
       "value": "[reference().value.value.value]",
       "type": "string"
     }

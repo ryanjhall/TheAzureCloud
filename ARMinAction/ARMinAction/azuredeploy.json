@@ -26,7 +26,11 @@
     },
 
     "asSettings": {
-      "msCompute-ASName": null,
+      "Name": "",
+      "Location": "",
+      "apiVersion": "", 
+      "UpdateDomainCount": 2,
+      "FaultDomainCount": 2,
       "TemplateFileName": "msCompute-AS.json"
     },
 
@@ -61,9 +65,9 @@
     "saSettings": {
       "TemplateFileName": "msStorage-SA.json"
     },
-    "msCompute-DiagTemplateFolder": "nestedtemplates",
-    "msCompute-DiagTemplateFileName": "msCompute-Diag.json",
-    "msCompute-DiagTemplateParametersFileName": "msCompute-Diag.parameters.json"
+    "diagSettings": {
+      "TemplateFileName": "msCompute-Diag.json"
+    }
   },
   "resources": [
     {
@@ -79,9 +83,8 @@
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('vNetSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
-        "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('vNetSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
+        "parameters": {
+
         }
       }
     },
@@ -98,9 +101,8 @@
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('vmSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
-        "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('vmSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
+        "parameters": {
+
         }
       }
     },
@@ -117,9 +119,8 @@
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('nicSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
-        "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('nicSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
+        "parameters": {
+
         }
       }
     },
@@ -136,9 +137,8 @@
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('asSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
-        "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('asSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
+        "parameters": {
+
         }
       }
     },
@@ -155,9 +155,8 @@
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('diskSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
-        "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('diskSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
+        "parameters": {
+
         }
       }
     },
@@ -174,9 +173,8 @@
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('pipSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
-        "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('pipSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
+        "parameters": {
+
         }
       }
     },
@@ -193,9 +191,8 @@
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('ilbSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
-        "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('ilbSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
+        "parameters": {
+
         }
       }
     },
@@ -212,9 +209,8 @@
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('plbSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
-        "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('plbSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
+        "parameters": {
+
         }
       }
     },
@@ -231,9 +227,8 @@
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('nsgSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
-        "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('nsgSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
+        "parameters": {
+
         }
       }
     },
@@ -250,9 +245,8 @@
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('rtSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
-        "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('rtSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
+        "parameters": {
+
         }
       }
     },
@@ -269,9 +263,8 @@
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('arSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
-        "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('arSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
+        "parameters": {
+
         }
       }
     },
@@ -288,9 +281,8 @@
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('saSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
-        "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('saSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
+        "parameters": {
+
         }
       }
     },
@@ -302,12 +294,11 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msCompute-DiagTemplateFolder'), '/', variables('msCompute-DiagTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('diagSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
         },
-        "parametersLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('msCompute-DiagTemplateFolder'), '/', variables('msCompute-DiagTemplateParametersFileName'), parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
+        "parameters": {
+
         }
       }
     }
