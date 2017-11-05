@@ -3,6 +3,24 @@
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
-  "resources": [],
+  "resources": [
+    {
+      "apiVersion": "2016-04-30-preview",
+      "type": "Microsoft.Compute/disks",
+      "name": "[variables('diskName')[copyIndex()]]",
+      "location": "[resourceGroup().location]",
+      "copy": {
+        "name": "diskCopy",
+        "count": "[length(variables('diskName'))]"
+      },
+      "properties": {
+        "creationData": {
+          "createOption": "[variables('diskCreateOption')]"
+        },
+        "accountType": "[variables('diskAccountType')[copyIndex()]]",
+        "diskSizeGB": "[variables('diskSizeGB')[copyIndex()]]"
+      }
+    }
+  ],
   "outputs": {}
 }

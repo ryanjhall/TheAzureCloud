@@ -2,6 +2,22 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "Azure Region": {
+      "type": "array",
+      "defaultValue": "australiaeast",
+      "allowedValues": [
+        "Australia East",
+        "Australia Southeast"
+      ]
+    },
+    "Deployment Mode": {
+      "type": "array",
+      "defaultValue": "Incremental",
+      "allowedValues": [
+        "Incremental",
+        "Complete"
+      ]
+    },
     "_artifactsLocation": {
       "type": "string"
     },
@@ -10,63 +26,67 @@
     }
   },
   "variables": {
-    "deploySettings": {
-      "TemplateFolder": "nestedtemplates"
+    "arSettings": {
+      "TemplateFileName": "msInsights-AR.json",
+      "apiVersion": ""
     },
-    "vNetSettings": {
-      "TemplateFileName": "msNetwork-vNet.json"
-    },
-
-    "vmSettings": {
-      "TemplateFileName": "msCompute-VM.json"
-    },
-
-    "nicSettings": {
-      "msNetwork-NICTemplateFileName": "msNetwork-NIC.json"
-    },
-
     "asSettings": {
       "Name": "",
       "Location": "",
-      "apiVersion": "", 
+      "apiVersion": "",
       "UpdateDomainCount": 2,
       "FaultDomainCount": 2,
       "TemplateFileName": "msCompute-AS.json"
     },
-
-    "diskSettings": {
-      "TemplateFileName": "msCompute-Disk.json"
-    },
-
-    "pipSettings": {
-      "TemplateFileName": "msNetwork-PIP.json"
-    },
-
-    "ilbSettings": {
-      "TemplateFileName": "msNetwork-ILB.json"
-    },
-
-    "plbSettings": {
-      "TemplateFileName": "msNetwork-PLB.json"
-    },
-
-    "nsgSettings": {
-      "msNetwork-NSGTemplateFileName": "msNetwork-NSG.json"
-    },
-
-    "rtSettings": {
-      "msNetwork-RTTemplateFileName": "msNetwork-RT.json"
-    },
-
-    "arSettings": {
-      "TemplateFileName": "msInsights-AR.json"
-    },
-
-    "saSettings": {
-      "TemplateFileName": "msStorage-SA.json"
+    "deploySettings": {
+      "TemplateFolder": "nestedtemplates"
     },
     "diagSettings": {
-      "TemplateFileName": "msCompute-Diag.json"
+      "TemplateFileName": "msCompute-Diag.json",
+      "apiVersion": "",
+      "storageAccountName": "",
+      "storageAccountResourceGroup": "",
+      "vmResourceId": ""
+    },
+    "diskSettings": {
+      "TemplateFileName": "msCompute-Disk.json",
+      "apiVersion": ""
+    },
+    "ilbSettings": {
+      "TemplateFileName": "msNetwork-ILB.json",
+      "apiVersion": ""
+    },
+    "nicSettings": {
+      "msNetwork-NICTemplateFileName": "msNetwork-NIC.json",
+      "apiVersion": ""
+    },
+    "nsgSettings": {
+      "msNetwork-NSGTemplateFileName": "msNetwork-NSG.json",
+      "apiVersion": ""
+    },
+    "pipSettings": {
+      "TemplateFileName": "msNetwork-PIP.json",
+      "apiVersion": ""
+    },
+    "plbSettings": {
+      "TemplateFileName": "msNetwork-PLB.json",
+      "apiVersion": ""
+    },
+    "rtSettings": {
+      "msNetwork-RTTemplateFileName": "msNetwork-RT.json",
+      "apiVersion": ""
+    },
+    "saSettings": {
+      "TemplateFileName": "msStorage-SA.json",
+      "apiVersion": ""
+    },
+    "vmSettings": {
+      "TemplateFileName": "msCompute-VM.json",
+      "apiVersion": ""
+    },
+    "vNetSettings": {
+      "TemplateFileName": "msNetwork-vNet.json",
+      "apiVersion": ""
     }
   },
   "resources": [
@@ -78,7 +98,7 @@
       "apiVersion": "2016-09-01",
       "dependsOn": [],
       "properties": {
-        "mode": "Incremental",
+        "mode": "[parameters('Deployment Mode')]",
         "templateLink": {
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('vNetSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
@@ -96,7 +116,7 @@
       "apiVersion": "2016-09-01",
       "dependsOn": [],
       "properties": {
-        "mode": "Incremental",
+        "mode": "[parameters('Deployment Mode')]",
         "templateLink": {
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('vmSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
@@ -114,7 +134,7 @@
       "apiVersion": "2016-09-01",
       "dependsOn": [],
       "properties": {
-        "mode": "Incremental",
+        "mode": "[parameters('Deployment Mode')]",
         "templateLink": {
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('nicSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
@@ -132,7 +152,7 @@
       "apiVersion": "2016-09-01",
       "dependsOn": [],
       "properties": {
-        "mode": "Incremental",
+        "mode": "[parameters('Deployment Mode')]",
         "templateLink": {
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('asSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
@@ -150,7 +170,7 @@
       "apiVersion": "2016-09-01",
       "dependsOn": [],
       "properties": {
-        "mode": "Incremental",
+        "mode": "[parameters('Deployment Mode')]",
         "templateLink": {
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('diskSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
@@ -168,7 +188,7 @@
       "apiVersion": "2016-09-01",
       "dependsOn": [],
       "properties": {
-        "mode": "Incremental",
+        "mode": "[parameters('Deployment Mode')]",
         "templateLink": {
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('pipSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
@@ -186,7 +206,7 @@
       "apiVersion": "2016-09-01",
       "dependsOn": [],
       "properties": {
-        "mode": "Incremental",
+        "mode": "[parameters('Deployment Mode')]",
         "templateLink": {
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('ilbSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
@@ -204,7 +224,7 @@
       "apiVersion": "2016-09-01",
       "dependsOn": [],
       "properties": {
-        "mode": "Incremental",
+        "mode": "[parameters('Deployment Mode')]",
         "templateLink": {
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('plbSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
@@ -222,7 +242,7 @@
       "apiVersion": "2016-09-01",
       "dependsOn": [],
       "properties": {
-        "mode": "Incremental",
+        "mode": "[parameters('Deployment Mode')]",
         "templateLink": {
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('nsgSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
@@ -240,7 +260,7 @@
       "apiVersion": "2016-09-01",
       "dependsOn": [],
       "properties": {
-        "mode": "Incremental",
+        "mode": "[parameters('Deployment Mode')]",
         "templateLink": {
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('rtSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
@@ -258,7 +278,7 @@
       "apiVersion": "2016-09-01",
       "dependsOn": [],
       "properties": {
-        "mode": "Incremental",
+        "mode": "[parameters('Deployment Mode')]",
         "templateLink": {
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('arSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
@@ -276,7 +296,7 @@
       "apiVersion": "2016-09-01",
       "dependsOn": [],
       "properties": {
-        "mode": "Incremental",
+        "mode": "[parameters('Deployment Mode')]",
         "templateLink": {
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('saSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"
@@ -292,7 +312,7 @@
       "apiVersion": "2016-09-01",
       "dependsOn": [ ],
       "properties": {
-        "mode": "Incremental",
+        "mode": "[parameters('Deployment Mode')]",
         "templateLink": {
           "uri": "[concat(parameters('_artifactsLocation'), '/', variables('deploySettings').TemplateFolder, '/', variables('diagSettings').TemplateFileName, parameters('_artifactsLocationSasToken'))]",
           "contentVersion": "1.0.0.0"

@@ -1,16 +1,20 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {},
+  "parameters": {
+    "Settings": {
+      "type": "object"
+    }
+  },
   "variables": {},
   "resources": [
     {
       "name": "Microsoft.Insights.VMDiagnosticsSettings",
-      "type": "extensions",
-      "location": "australiaeast",
-      "apiVersion": "2016-03-30",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "location": "[parameters('Settings').Location]",
+      "apiVersion": "[parameters('Settings').apiVersion]",
       "dependsOn": [
-        "[resourceId('Microsoft.Compute/virtualMachines', parameters('VMName'))]"
+        "[parameters('Settings').vmResourceId]"
       ],
       "tags": {
         "displayName": "DiagnosticsExtension"
@@ -278,7 +282,7 @@
                 ]
               },
               "Metrics": {
-                "resourceId": "[variables('wadMetricsResourceId')]",
+                "resourceId": "[parameters('Settings').vmResourceId]",
                 "MetricAggregation": [
                   {
                     "scheduledTransferPeriod": "PT1H"
@@ -292,8 +296,8 @@
           }
         },
         "protectedSettings": {
-          "storageAccountName": "[parameters('storageAccountName')]",
-          "storageAccountKey": "[listkeys(resourceId(parameters('storageAccountResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2016-01-01').keys[0].value]"
+          "storageAccountName": "[parameters('Settings').storageAccountName]",
+          "storageAccountKey": "[listkeys(resourceId(parameters('Settings').storageAccountResourceGroup, 'Microsoft.Storage/storageAccounts', parameters('Settings').storageAccountName), '2016-01-01').keys[0].value]"
         }
       }
     }
